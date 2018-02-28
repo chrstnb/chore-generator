@@ -7,7 +7,7 @@ var d;
 function myFunction() {
   d = new Date();
 
-  var ss = SpreadsheetApp.openById("SHEET_KEY");
+  var ss = SpreadsheetApp.openById("1EA_1P_HKDdVAWqHc-V9tf82vPonG8qr6r705QxF-sig");
   var chores = ss.getSheets()[0];
   var peopleList = ss.getSheets()[1];
   var rotation = ss.getSheets()[2];
@@ -16,12 +16,9 @@ function myFunction() {
   var dataToImport = {};
   for(var i = 1; i < data.length; i++) {
     Logger.log(data[i][0]);
-    if (data[i][0] == "Shanti Camper Singh") {
-      shanti = data[i];
-    } else {
-      people[people.length] = data[i];
-    }
+    people[people.length] = data[i];
   }
+  console.log(people);
   var choreData = chores.getDataRange().getValues();
   for (var i = 1; i < choreData.length; i++) {
     var type = choreData[i][0];
@@ -31,9 +28,6 @@ function myFunction() {
     while (i != choreData.length - 1 && choreData[i+1][0] == "") {
       i++;
       duties[duties.length] = choreData[i][1];
-    }
-    if (type == "kitchen"){
-      var kitchen = [type, duties, cat];
     }
     choreList[choreList.length] = [type, duties, cat];
   }
@@ -56,7 +50,7 @@ function rotateNames(num) {
        
 function updateRotation(sheet) {
   var num = parseInt(sheet.getDataRange().getValues());
-  if (num == 6) {
+  if (num == 7) {
     num = 1;
   } else {
     num = num + 1;
